@@ -1,0 +1,41 @@
+{namespace media=TYPO3\Media\ViewHelpers}
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:neos="http://typo3.org/ns/TYPO3/Neos/ViewHelpers">
+
+<f:section name="newsDetail">
+	<div{attributes -> f:format.raw()}>
+		<div class="NewsDetail">
+
+			<neos:contentElement.editable property="title" tag="h1"/>
+
+			<f:format.raw value="{main}" />
+
+			<!-- Categories -->
+			<f:if condition="{categories}">
+				<p>Categories:
+					<f:for each="{categories}" as="category">
+						<neos:link.node node="{category}">{category.properties.title}</neos:link.node>
+					</f:for>
+				</p>
+			</f:if>
+
+			<!-- Author -->
+			<f:if condition="{author}">
+				<p>Author: <neos:link.node node="{author}">{author.title}</neos:link.node></p>
+			</f:if>
+
+			<!-- related News -->
+			<f:if condition="{related}">
+				<p>Related news:
+					<f:for each="{related}" as="relnews">
+						<neos:link.node node="{relnews}">{relnews.properties.title}</neos:link.node><br />
+					</f:for>
+				</p>
+			</f:if>
+		</div>
+	</div>
+</f:section>
+</html>

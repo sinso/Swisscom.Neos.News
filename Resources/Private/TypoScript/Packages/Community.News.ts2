@@ -1,0 +1,26 @@
+prototype(Community.News:NewsShort) {
+	templatePath = 'resource://Swisscom.Neos.News/Private/Templates/TypoScriptObjects/Packages/Community.News/NewsShort.html'
+	settings = ${Configuration.setting('Community.News')}
+	main = TYPO3.Neos:ContentCollection{
+		nodePath = 'main'
+	}
+}
+
+prototype(Community.News:NewsDetail) < prototype(TYPO3.Neos:Content) {
+	templatePath = 'resource://Swisscom.Neos.News/Private/Templates/TypoScriptObjects/Packages/Community.News/NewsDetail.html'
+	image = ${q(node).property('image')}
+}
+
+prototype(Community.News:NewsLatest) {
+	templatePath = 'resource://Swisscom.Neos.News/Private/Templates/NodeTypes/Packages/Community.News/NewsLatest.html'
+}
+
+prototype(Community.News:NewsShortList) < prototype(Community.News:NewsShort) {
+	templatePath = 'resource://Swisscom.Neos.News/Private/Templates/TypoScriptObjects/Packages/Community.News/NewsShortList.html'
+	image = ${q(node).property('image')}
+}
+
+prototype(Community.News:NewsList) {
+	templatePath = 'resource://Swisscom.Neos.News/Private/Templates/NodeTypes/Packages/Community.News/NewsList.html'
+	itemRenderer = Community.News:NewsShortList
+}

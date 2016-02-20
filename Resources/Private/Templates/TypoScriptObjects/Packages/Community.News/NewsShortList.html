@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:neos="http://typo3.org/ns/TYPO3/Neos/ViewHelpers">
+
+<f:section name="newsShort">
+	<article>
+		<div{attributes -> f:format.raw()}>
+
+			<f:if condition="{publishDate}">
+				<div class="date">
+					<f:format.date format="d.m.Y">{publishDate}</f:format.date>
+				</div>
+			</f:if>
+
+			<neos:contentElement.editable property="title" tag="h4" />
+
+			<neos:contentElement.editable property="teaser" tag="div" class="teaser"/>
+
+			<f:if condition="{image}">
+				<f:render partial="Image" arguments="{
+					image: image,
+					maximumHeight: 200,
+					allowCropping: 1,
+					alternativeText: title,
+					title: title
+				}" />
+			</f:if>
+
+			<p class="text-right">
+				<neos:link.node class="read-more" node="{node}" title="{newsNode.properties.title}">
+					<f:translate id="read" package="Swisscom.Neos.News" source="Community.News">Weiterlesen</f:translate> <i class="fa fa-angle-right"></i>
+				</neos:link.node>
+			</p>
+
+			<f:if condition="{node.context.workspace.name} != 'live'">
+				<p class="text-right"><neos:link.node node="{node}"><i class="fa fa-pencil fa-2x"></i></neos:link.node></p>
+			</f:if>
+
+		</div>
+	</article>
+</f:section>
+</html>

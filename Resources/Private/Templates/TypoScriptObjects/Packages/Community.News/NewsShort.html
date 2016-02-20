@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:neos="http://typo3.org/ns/TYPO3/Neos/ViewHelpers">
+<f:section name="newsShort">
+	<article>
+		<div{attributes -> f:format.raw()}>
+			<f:if condition="{publishDate}">
+				<div class="date">
+					<span class="day"><f:format.date format="d">{publishDate}</f:format.date></span>
+					<span class="month"><f:format.date format="M">{publishDate}</f:format.date></span>
+				</div>
+			</f:if>
+
+			<h4>
+				<f:if condition="{node.context.workspace.name} != 'live'">
+					<f:then>
+						<neos:contentElement.editable property="title" />
+					</f:then>
+					<f:else>
+						<neos:link.node node="{node}">
+							{title -> f:format.raw()}
+						</neos:link.node>
+					</f:else>
+				</f:if>
+			</h4>
+			<p>
+				<f:format.crop maxCharacters="{settings.newsShort.crop.maxCharacters}" append="{settings.newsShort.crop.append}">
+					{main -> f:format.raw() -> f:format.stripTags()}
+				</f:format.crop>
+			</p>
+
+			<p class="text-right">
+				<neos:link.node class="read-more" node="{node}" title="{newsNode.properties.title}">
+					<f:translate id="read" package="Swisscom.Neos.News" source="Community.News">Weiterlesen</f:translate> <i class="fa fa-angle-right"></i>
+				</neos:link.node>
+			</p>
+
+			<f:if condition="{node.context.workspace.name} != 'live'">
+				<p class="text-right"><neos:link.node node="{node}"><i class="fa fa-pencil fa-2x"></i></neos:link.node></p>
+			</f:if>
+
+		</div>
+	</article>
+</f:section>
+</html>

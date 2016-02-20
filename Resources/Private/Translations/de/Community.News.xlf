@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+	<file original="" product-name="Swisscom.Neos.News.Community.News" source-language="de" datatype="plaintext" target-language="de">
+		<body>
+			<trans-unit id="read">
+				<source>Weiterlesen</source>
+			</trans-unit>
+			<trans-unit id="backendNoNewsMessage">
+				<source>Sobald News vorhanden sind, werden diese an dieser Stelle publiziert.</source>
+			</trans-unit>
+			<trans-unit id="relatedNews">
+				<source>Andere News:</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

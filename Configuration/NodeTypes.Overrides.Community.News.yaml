@@ -1,0 +1,34 @@
+'Community.News:AbstractNews':
+  superTypes:
+    'TYPO3.Neos.NodeTypes:ImageMixin': true
+  childNodes:
+    main:
+      constraints:
+        nodeTypes:
+          'TYPO3.Neos.NodeTypes:Text': true
+          'TYPO3.Neos.NodeTypes:Image': true
+          'TYPO3.Neos.NodeTypes:TextWithImage': true
+          '*': false
+  properties:
+    title:
+      ui:
+        aloha:
+          placeholder: 'Enter title here'
+          link:
+            a: false
+    teaser:
+      ui:
+        label: 'Teaser text (only for List/Latest view)'
+        aloha:
+          placeholder: 'Enter teaser here'
+    image:
+      ui:
+        label: 'Image (only for List/Latest view)'
+    categories: null
+    author: null
+#    related: null
+    tags: null
+'Community.News:Category':
+  abstract: true
+'Community.News:Author':
+  abstract: true
